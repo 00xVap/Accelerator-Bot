@@ -1,0 +1,6 @@
+.env
+node_modules/
+other-files/
+package-lock.json
+package.json
+src/utils/convertServerIdToParty.js

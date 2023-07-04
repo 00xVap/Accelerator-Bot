@@ -1,38 +1,37 @@
 require("dotenv").config();
 const { token } = process.env;
-const { Player } = require("discord-player");
-const {
-  Client,
-  Collection,
-  GatewayIntentBits,
-} = require("discord.js");
+const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
+const { DisTube } = require("distube");
+const { SpotifyPlugin, YtDlpPlugin } = require("@distube/spotify")
 
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildVoiceStates,
-    GatewayIntentBits.GuildPresences,
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.MessageContent,
     GatewayIntentBits.GuildMessages,
   ],
 });
+client.setMaxListeners(25);
 
 client.commands = new Collection();
+client.cooldowns = new Collection();
 require("./mongo")();
 
-client.commandArray = [];
+client.globalCommandArray = [];
+client.groupCommandArray = [];
+client.testingCommandArray = [];
 client.color = "#302c34";
 client.owner = "380933616898932746";
-client.player = new Player(client, {
-  ytdlOptions: {
-    quality: "highestaudio",
-    highWaterMark: 1 << 25,
-  },
+client.distube = new DisTube(client, {
+  emitNewSongOnly: true,
+  leaveOnFinish: true,
+  emitAddSongWhenCreatingQueue: false,
+  plugins: [new SpotifyPlugin()]
 });
+module.exports = client;
 client.snipes = new Map();
 
-client.on("messageDelete", async (message, channel) => {
+/*client.on("messageDelete", async (message, channel) => {
   client.snipes.set(message.channel.id, {
     content: message.content,
     author: message.author,
@@ -40,12 +39,30 @@ client.on("messageDelete", async (message, channel) => {
       ? message.attachments.first().proxyURL
       : null,
   });
+});*/
+
+process.on('uncaughtException', async (err) => {
+  console.error('Uncaught Exception:', err.message);
+  console.error(err.stack);
+
+  return;
 });
 
-const { handleCommands } = require("./functions/handlers/handleCommands");
+process.on('unhandledRejection', async (err) => {
+  console.error('Unhandled Promise Rejection:', err.message);
+  console.error(err.stack);
+
+  return;
+});
+
+const { handleGlobalCommands } = require("./functions/handlers/handleGlobalCommands");
+const { handleTestingCommands } = require("./functions/handlers/guild-command-handlers/handleTestingCommands");
+const { handleTheGroupCommands } = require("./functions/handlers/guild-command-handlers/handleTheGroupCommands");
 const { handleEvents } = require("./functions/handlers/handleEvents");
 
 client.login(token).then(() => {
-  handleCommands(client);
+  handleGlobalCommands(client);
+  handleTheGroupCommands(client);
+  handleTestingCommands(client);
   handleEvents(client);
 });

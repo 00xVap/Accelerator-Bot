@@ -1,2 +1,4 @@
 # Accelerator-Bot
-Repo for my main Discord Bot, Accelerator
+Repository for my main Discord Bot, Accelerator
+
+Type `/help` for more information.

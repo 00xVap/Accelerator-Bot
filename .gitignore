@@ -3,3 +3,4 @@ node_modules/
 other-files/
 package-lock.json
 package.json
+src/commands/guild-commands

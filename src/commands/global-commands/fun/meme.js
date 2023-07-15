@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, Butt
 const redditFetch = require("reddit-fetch");
 
 module.exports = {
-  cooldown: 10,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("meme")
     .setDMPermission(true)

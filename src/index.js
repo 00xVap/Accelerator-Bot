@@ -1,14 +1,15 @@
 require("dotenv").config();
 const { token } = process.env;
-const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
+const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const { DisTube } = require("distube");
-const { SpotifyPlugin, YtDlpPlugin } = require("@distube/spotify")
+const { SpotifyPlugin } = require("@distube/spotify")
 
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildVoiceStates,
     GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent
   ],
 });
 client.setMaxListeners(25);
@@ -17,7 +18,6 @@ client.commands = new Collection();
 client.cooldowns = new Collection();
 require("./mongo")();
 
-client.globalCommandArray = [];
 client.groupCommandArray = [];
 client.testingCommandArray = [];
 client.color = "#302c34";
@@ -26,10 +26,17 @@ client.distube = new DisTube(client, {
   emitNewSongOnly: true,
   leaveOnFinish: true,
   emitAddSongWhenCreatingQueue: false,
-  plugins: [new SpotifyPlugin()]
+  plugins: [new SpotifyPlugin({
+    parallel: true,
+    emitEventsAfterFetching: false,
+    api: {
+      clientId: "624a1b42c6d54653b2358a60b7cb166b",
+      clientSecret: "c12df0061a824536b3597e510085925d",
+    },
+  })]
 });
+
 module.exports = client;
-client.snipes = new Map();
 
 /*client.on("messageDelete", async (message, channel) => {
   client.snipes.set(message.channel.id, {

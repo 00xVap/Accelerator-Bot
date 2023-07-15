@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, Butt
 const fetch = require("node-fetch");
 
 module.exports = {
-  cooldown: 10,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("8ball")
     .setDescription("Ask the magic 8ball anything!")

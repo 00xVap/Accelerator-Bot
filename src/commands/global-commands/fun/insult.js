@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, Butt
 const axios = require("axios");
 
 module.exports = {
-  cooldown: 10,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("insult")
     .setDMPermission(true)

@@ -1,7 +1,9 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require("discord.js");
 const toggleSchema = require("../../../model/toggle");
+const { globalCommandArray } = require("../../../functions/handlers/handleGlobalCommands")
 
 module.exports = {
+    cooldown: 3,
     data: new SlashCommandBuilder()
         .setName("toggle-command")
         .setDescription("Enable or disable specific commands.")
@@ -26,13 +28,28 @@ module.exports = {
                         .setDescription("Command to disable")
                         .setRequired(true)
                 )
+        )
+        .addSubcommand((subcommand) =>
+            subcommand
+                .setName("disabled_list")
+                .setDescription("View a list of all the disabled commands.")
         ),
 
     async execute(interaction, client) {
         const embed = new EmbedBuilder()
         const { guild, options } = interaction;
         const sub = options.getSubcommand();
-        const cmd = options.getString("command")
+        const cmd = options.getString("command-name")
+
+        const directories = [
+            ...new Set(interaction.client.commands.map((cmd) => cmd.folder))
+        ];
+
+        directories.splice(6, 1)
+
+        const getCommands = interaction.client.commands.filter((cmd) => cmd.folder).map((cmd) => {
+            return cmd.data.name
+        });
 
         switch (sub) {
             case "enable":
@@ -75,39 +92,31 @@ module.exports = {
                 toggleSchema.findOne({ Guild: guild.id, Command: cmd }, async (err, data) => {
                     if (err) throw err;
 
-                    const commands = client.globalCommandArray.map((e) => e.name)
-
-                    console.log(commands)
-
-                    commands.forEach(async (command) => {
-                        if (!command.includes(cmd)) {
-                            embed.setDescription(
-                                `<:Error:977069715149160448> This is not a valid command!`
-                            );
-
-                            await interaction.reply({
-                                embeds: [embed],
-                                ephemeral: true,
-                            });
-                            return;
-                        }
-                    })
-
                     const noDisable = ["toggle-command", "help"]
 
-                    noDisable.forEach(async (a) => {
-                        if (cmd.includes(a)) {
-                            embed.setDescription(
-                                `<:Error:977069715149160448> Cannot disable this command!`
-                            );
+                    if (!getCommands.includes(cmd)) {
+                        embed.setDescription(
+                            `<:Error:977069715149160448> This is not a valid command!`
+                        );
 
-                            await interaction.reply({
-                                embeds: [embed],
-                                ephemeral: true,
-                            });
-                            return;
-                        }
-                    })
+                        await interaction.reply({
+                            embeds: [embed],
+                            ephemeral: true,
+                        });
+                        return;
+                    }
+
+                    if (noDisable.includes(cmd)) {
+                        embed.setDescription(
+                            `<:Error:977069715149160448> Cannot disable this command!`
+                        );
+
+                        await interaction.reply({
+                            embeds: [embed],
+                            ephemeral: true,
+                        });
+                        return;
+                    }
 
                     if (data) {
                         embed.setDescription(
@@ -136,6 +145,27 @@ module.exports = {
                         embeds: [embed],
                         ephemeral: true,
                     });
+                })
+                    .clone()
+                    .catch(function (err) {
+                        console.log(err);
+                    });
+                break;
+
+            case "disabled_list":
+                toggleSchema.find({ Guild: interaction.guild.id }, async (err, data) => {
+                    if (err) throw err;
+
+                    const list = data.map((cmd, i) => `\`${cmd.Command}\``).join(", ");
+
+                    embed.setTitle(`Disabled commands in ${guild.name}`)
+                        .setThumbnail(guild.iconURL({ dynamic: true }))
+                        .setDescription(list || `<:Error:977069715149160448> There are no disabled command in this guild yet!`);
+
+                    await interaction.reply({
+                        embeds: [embed],
+                    });
+                    return;
                 })
                     .clone()
                     .catch(function (err) {

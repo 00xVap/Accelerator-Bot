@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField, PermissionFlagsBits } = require("discord.js");
 
 module.exports = {
-    cooldown: 5,
+    cooldown: 3,
     data: new SlashCommandBuilder()
         .setName("auto-mod")
         .setDescription("Setup the Auto-Moderation system.")
@@ -80,11 +80,10 @@ module.exports = {
                     ]
                 }).catch(async err => {
                     setTimeout(async () => {
-                        console.log(err);
                         await interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                    .setDescription(`${err}`)
+                                    .setDescription(`<:Error:977069715149160448> ${err}`)
                             ]
                         })
                     }, 2000)
@@ -138,11 +137,10 @@ module.exports = {
                     ]
                 }).catch(async err => {
                     setTimeout(async () => {
-                        console.log(err);
                         await interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                    .setDescription(`${err}`)
+                                    .setDescription(`<:Error:977069715149160448> ${err}`)
                             ]
                         })
                     }, 2000)
@@ -193,11 +191,10 @@ module.exports = {
                     ]
                 }).catch(async err => {
                     setTimeout(async () => {
-                        console.log(err);
                         await interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                    .setDescription(`${err}`)
+                                    .setDescription(`<:Error:977069715149160448> ${err}`)
                             ]
                         })
                     }, 2000)
@@ -250,11 +247,10 @@ module.exports = {
                     ]
                 }).catch(async err => {
                     setTimeout(async () => {
-                        console.log(err);
                         await interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                    .setDescription(`${err}`)
+                                    .setDescription(`<:Error:977069715149160448> ${err}`)
                             ]
                         })
                     }, 2000)
@@ -279,7 +275,7 @@ module.exports = {
             case "rule_list":
                 const fetch = require("node-fetch");
 
-                let res = await fetch(`https://discord.com/api/v10/guilds/${interaction.guild.id}/auto-moderation/rules`, {
+                await fetch(`https://discord.com/api/v10/guilds/${interaction.guild.id}/auto-moderation/rules`, {
                     method: "GET",
                     headers: {
                         "Authorization": `Bot ${process.env.token}`

@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const prettyMilliseconds = require("pretty-ms");
 
 module.exports = {
-  cooldown: 10,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("uptime")
     .setDMPermission(true)

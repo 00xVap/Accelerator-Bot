@@ -77,6 +77,6 @@ module.exports = {
                 "Authorization": "Bearer " + player_token,
                 "Origin": "https://diep.io/"
             }
-        }).then(r => r.json())
+        }).then(r => r.json()).then(r => console.log(r))
     },
 };

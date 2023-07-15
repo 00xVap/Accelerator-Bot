@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const axios = require("axios");
 
 module.exports = {
-  cooldown: 10,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("avatar")
     .setDescription("View your avatar or the avatar of a given user.")

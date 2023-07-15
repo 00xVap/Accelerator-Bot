@@ -9,7 +9,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
-  cooldown: 15,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("kick")
     .setDescription("Kicks the specified user.")

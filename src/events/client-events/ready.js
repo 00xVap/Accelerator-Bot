@@ -71,6 +71,9 @@ module.exports = {
     });
 
     collector.on("collect", async (i) => {
+      await i.deferUpdate({
+        ephemeral: true
+      })
       switch (i.customId) {
         case "rules":
           embed.setTitle("🚫 Rules")
@@ -102,7 +105,7 @@ module.exports = {
               \`13\` Insinuating drama about one or more individuals, whether it be inside or outside of the server doesn't make you any better than the person you're targeting. Staff WILL punish you, no matter how "in the right" you are.
               `)
 
-          await i.reply({
+          await i.followUp({
             embeds: [embed],
             ephemeral: true
           });
@@ -119,7 +122,7 @@ module.exports = {
                 **-** If you want to assign yourself a selfrole, take a look in <#908043023940739073>.
               `)
 
-          await i.reply({
+          await i.followUp({
             embeds: [embed],
             ephemeral: true
           })
@@ -134,7 +137,7 @@ module.exports = {
                 \`https://discord.com/invite/thegroup\`
               `)
 
-          await i.reply({
+          await i.followUp({
             embeds: [embed],
             ephemeral: true
           })

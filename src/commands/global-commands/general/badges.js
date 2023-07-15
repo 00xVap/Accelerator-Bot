@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
+    cooldown: 3,
     data: new SlashCommandBuilder()
         .setName("badges")
         .setDescription("Returns the badges of a user.")

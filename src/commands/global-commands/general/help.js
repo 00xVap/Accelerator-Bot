@@ -7,6 +7,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
+    cooldown: 3,
     data: new SlashCommandBuilder()
         .setName("help")
         .setDescription("Returns a list of the bot's commands."),
@@ -15,6 +16,7 @@ module.exports = {
         const emojis = {
             general: "👥",
             moderation: "🛡️",
+            music: "🎧",
             utility: "⚙️",
             diep: { name: "tank", id: "1079656450869178369" },
             fun: "🎭",
@@ -23,7 +25,7 @@ module.exports = {
         const directories = [
             ...new Set(interaction.client.commands.map((cmd) => cmd.folder))
         ];
-        directories.splice(5, 1)
+        directories.splice(6, 1)
 
         const formatString = (str) =>
             `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`;
@@ -50,6 +52,7 @@ module.exports = {
                 **Command Categories:**
                 > **»** 👥 General
                 > **»** 🛡️ Moderation
+                > **»** 🎧 Music
                 > **»** ⚙️ Utility
                 > **»** <:tank:1079656450869178369> Diep.io
                 > **»** 🎭 Fun\n

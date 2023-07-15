@@ -5,7 +5,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
-  cooldown: 10,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("embed")
     .setDescription("Creates a customized embed in the specified channel.")
@@ -53,7 +53,7 @@ module.exports = {
     const embed = new EmbedBuilder();
 
     const color = interaction.options.getString("color");
-    let channel = interaction.options.getChannel("channel");
+    let channel = interaction.options.getChannel("channel") || interaction.channel;
     const description = interaction.options.getString("description");
     const title = interaction.options.getString("title");
     const image = interaction.options.getString("image");
@@ -154,26 +154,26 @@ module.exports = {
       embed.setThumbnail(`${thumbnail}`);
     }
 
-    if (channel) {
-      const embed2 = new EmbedBuilder().setDescription(
-        `<:Success:977389031837040670> Embed sent!`
-      );
-      channel.send({
+    const embed2 = new EmbedBuilder().setDescription(
+      `<:Success:977389031837040670> Embed sent!`
+    );
+    channel.send({
+      embeds: [embed],
+    }).catch(async err => {
+      const embed = new EmbedBuilder()
+        .setDescription(`<:Error:977069715149160448> ${err.message}`)
+
+      await interaction.followUp({
         embeds: [embed],
-      });
-      await interaction.reply({
-        embeds: [embed2],
         ephemeral: true,
       });
       return;
-    } else if (!channel) {
-      await interaction.reply({
-        embeds: [embed],
-      });
-      return;
-    }
+    })
     await interaction.reply({
-      embeds: [embed],
+      embeds: [embed2],
+      ephemeral: true,
     });
+    return;
+
   },
 };

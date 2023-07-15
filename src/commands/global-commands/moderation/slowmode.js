@@ -10,7 +10,7 @@ const {
 const ms = require("ms");
 
 module.exports = {
-  cooldown: 15,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("slowmode")
     .setDescription("Modifies the channel's slowmode.")

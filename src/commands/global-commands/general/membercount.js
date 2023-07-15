@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, Embed } = require("discord.js");
 
 module.exports = {
-  cooldown: 10,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("membercount")
     .setDescription("Returns the total member count of the current server.")

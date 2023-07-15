@@ -11,10 +11,9 @@ const {
 const moment = require("moment");
 const prettyMilliseconds = require("pretty-ms");
 const cpuStat = require("cpu-stat");
-const { user } = require("../../..");
 
 module.exports = {
-  cooldown: 10,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("info")
     .setDescription(
@@ -173,7 +172,6 @@ module.exports = {
               **Server Count:** \`${client.guilds.cache.size}\`
               **User Count:** \`${client.users.cache.size}\`
               **Uptime:** \`${prettyMilliseconds(client.uptime)}\`
-              **Commands:** \`${client.globalCommandArray.length}\`
               **Node Version:** \`${node}\`
               **Library:** Discord.js
               **CPU Usage:** \`${cpu}%\`

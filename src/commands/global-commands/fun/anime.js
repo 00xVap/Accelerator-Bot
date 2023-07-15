@@ -2,7 +2,7 @@ const { get } = require("request-promise-native");
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 
 module.exports = {
-  cooldown: 15,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("anime")
     .setDescription("Gets information on a specified anime.")

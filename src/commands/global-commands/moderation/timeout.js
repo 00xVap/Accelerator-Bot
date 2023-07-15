@@ -13,7 +13,7 @@ const moment = require("moment");
 const wait = require("node:timers/promises").setTimeout;
 
 module.exports = {
-  cooldown: 15,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("timeout")
     .setDescription("Add or remove a member's timeout.")
@@ -193,8 +193,7 @@ module.exports = {
           if (m.customId === "yes") {
             m.deferUpdate();
 
-            embed
-              .setTitle("Timeout Results:")
+            embed.setTitle("Timeout Results:")
               .setDescription(`
                 **Moderator:** <@${interaction.user.id}>
                 **Reason:** ${reason}

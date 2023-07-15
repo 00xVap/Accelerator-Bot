@@ -4,7 +4,7 @@ async function handleGlobalCommands(client, interaction) {
   const table = new ascii()
     .setHeading("Commands", "Status");
 
-  let globalCommandArray = [];
+  const globalCommandArray = [];
 
   const commandFolders = fs.readdirSync("./src/commands/global-commands");
   for (const folder of commandFolders) {
@@ -25,7 +25,7 @@ async function handleGlobalCommands(client, interaction) {
     }
   }
 
-  client.application.commands.set(globalCommandArray)
+  await client.application.commands.set(globalCommandArray)
 
   return console.log(table.toString(), `\n[SYSTEM]: Loaded ${globalCommandArray.length} commands in: GLOBAL.`)
 }

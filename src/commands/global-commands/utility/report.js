@@ -1,6 +1,7 @@
-const { SlashCommandBuilder, EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } = require("discord.js");
+const { SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } = require("discord.js");
 
 module.exports = {
+    cooldown: 3,
     data: new SlashCommandBuilder()
         .setName("report")
         .setDescription("Report a bug to the developers.")

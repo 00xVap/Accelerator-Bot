@@ -12,7 +12,7 @@ const warnSchema = require("../../../model/warning");
 const moment = require("moment");
 
 module.exports = {
-  cooldown: 15,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("warn")
     .setDescription("Add, remove or view a user's warnings.")

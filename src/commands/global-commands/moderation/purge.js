@@ -9,7 +9,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
-  cooldown: 15,
+  cooldown: 3,
   data: new SlashCommandBuilder()
     .setName("purge")
     .setDescription("Deletes a specified number of messages.")

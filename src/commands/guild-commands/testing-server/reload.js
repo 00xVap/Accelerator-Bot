@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const { handleGlobalCommands } = require("../../../functions/handlers/handleGlobalCommands");
+const { handleTestingCommands } = require("../../../functions/handlers/guild-command-handlers/handleTestingCommands");
+const { handleTheGroupCommands } = require("../../../functions/handlers/guild-command-handlers/handleTheGroupCommands");
 const { handleEvents } = require("../../../functions/handlers/handleEvents");
 
 module.exports = {
@@ -27,6 +29,8 @@ module.exports = {
         switch (sub) {
             case "commands":
                 handleGlobalCommands(client);
+                handleTheGroupCommands(client);
+                handleTestingCommands(client);
 
                 embed.setDescription(`<:Success:977389031837040670> Commands reloaded successfully.`)
 

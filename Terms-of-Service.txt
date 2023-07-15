@@ -1,0 +1,55 @@
+Terms of Service for Accelerator
+
+Last Updated: 7/4/2023
+
+Please read these Terms of Service carefully before using Accelerator. By using or accessing the bot, you agree to be bound by these Terms.
+
+1. Acceptance of Terms
+	1.1. These Terms constitute a legal agreement between you and us and govern your use of Accelerator. By using the bot, you represent that you have read and understood these Terms and agree to be bound by them.
+	1.2. If you do not agree to these Terms, you are prohibited from using the bot.
+
+2. Use of Accelerator
+	2.1. Accelerator is provided to enhance your Discord server experience. You may use the bot for personal or non-commercial purposes, subject to these Terms.
+	2.2. You must comply with all applicable laws and regulations while using Accelerator. You are solely responsible for your use of the bot and any consequences thereof.
+	2.3. We reserve the right to modify, update, or discontinue the Bot at any time without prior notice.
+
+3. Limitations
+	3.1. While we strive to provide accurate and reliable information, Accelerator may not always be error-free or available without interruptions.
+	3.2. The Bot's functionality may be subject to limitations, including but not limited to server capacity, message volume, or compatibility with certain Discord features.
+	3.3. We are not responsible for any loss or damages resulting from your reliance on the Bot's information or its availability.
+
+4. User Conduct
+	4.1. You agree to use Accelerator in compliance with these Terms and applicable laws.
+	4.2. You will not use the bot to:
+		a) Violate any laws, regulations, or third-party rights.
+		b) Harass, threaten, or harm others, or promote discrimination or violence.
+		c) Transmit any unauthorized or malicious content, including viruses or malware.
+		d) Impersonate or misrepresent yourself or your affiliation with any entity.
+		e) Engage in any activity that disrupts or interferes with the Bot's operation or performance.
+	4.3. We reserve the right to terminate your access to use Accelerator if you violate these Terms or engage in any unauthorized or inappropriate conduct.
+
+5. Intellectual Property
+	5.1. All intellectual property rights in the bot, including but not limited to trademarks, copyrights, and trade secrets, belong to us or our licensors.
+	5.2. You are granted a limited, non-exclusive, non-transferable, and revocable license to use Accelerator solely in accordance with these Terms. You may not copy, modify, distribute, or reverse engineer the bot.
+
+6. Privacy
+	6.1. We may collect certain personal information from you when you use Accelerator. Our collection and use of your personal information are governed by our Privacy Policy, which is incorporated by reference into these Terms.
+	6.2. By using Accelerator, you consent to the collection, storage, and processing of your personal information as described in our Privacy Policy.
+
+7. Limitation of Liability
+	7.1. To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or in connection with the use or inability to use the bot.
+	7.2. We do not guarantee the accuracy, completeness, or reliability of the Bot's information or its compatibility with any other software or platform.
+
+8. Indemnification
+	8.1. You agree to indemnify, defend, and hold us harmless from and against any claims, liabilities, damages, losses, and expenses arising out of or in connection with your use of the bot or any breach of these Terms.
+
+9. Termination
+	9.1. We may terminate your access to Accelerator at any time without prior notice if you violate these Terms or engage in any prohibited conduct.
+	9.2. Upon termination, you must cease all use of the Bot and delete any copies of the Bot in your possession.
+
+10. Entire Agreement
+	10.1. These Terms constitute the entire agreement between you and us regarding the Bot and supersede all prior or contemporaneous agreements, understandings, and communications, whether oral or written.
+
+If you have any questions or concerns regarding these Terms, please join the support server (https://discord.gg/DZwZv73FzG).
+
+By using Accelerator , you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.

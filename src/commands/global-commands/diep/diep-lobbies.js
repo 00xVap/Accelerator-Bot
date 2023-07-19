@@ -57,20 +57,20 @@ module.exports = {
       .setCustomId("requested")
       .setDisabled(true)
       .setStyle(ButtonStyle.Secondary)
-
-    if (!interaction.user.discriminator || interaction.user.discriminator === 0 || interaction.user.tag === `${interaction.user.username}#0`) {
-      requestedButton.setLabel(`Requested by ${interaction.user.username}`)
-    } else {
-      requestedButton.setLabel(`Requested by ${interaction.user.tag}`)
-    }
-    
     const voteButton = new ButtonBuilder()
       .setStyle(ButtonStyle.Link)
       .setURL("https://top.gg/bot/1011816140885991425/vote")
       .setLabel("Vote for Accelerator!")
-    requestedRow.addComponents(requestedButton, voteButton);
 
-    await interaction.deferReply();
+      await interaction.deferReply();
+
+      if (!interaction.user.discriminator || interaction.user.discriminator === 0 || interaction.user.tag === `${interaction.user.username}#0`) {
+        requestedButton.setLabel(`Requested by ${interaction.user.username}`)
+      } else {
+        requestedButton.setLabel(`Requested by ${interaction.user.tag}`)
+      }
+
+    requestedRow.addComponents(requestedButton, voteButton);
 
     fetch(diepFetched, {
       headers: {

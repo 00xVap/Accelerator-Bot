@@ -45,13 +45,13 @@ client.distube
         if (channel) {
             channel.send({
                 embeds: [new EmbedBuilder()
-                    .setDescription(`<:Error:977069715149160448> ${e.toString().slice(0, 1974)}`)]
+                    .setDescription(`<:Error:977069715149160448> An error has occured: ${e.toString().slice(0, 1974)}`)]
             })
         } else {
             console.error(e)
         }
     })
-    .on('empty', (channel) => {
+    .on('empty', channel => {
         channel.send({
             embeds: [new EmbedBuilder()
                 .setDescription('<:Error:977069715149160448> Voice channel is empty! Leaving the channel...')]

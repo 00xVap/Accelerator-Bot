@@ -1,5 +1,4 @@
 require("dotenv").config();
-const { token } = process.env;
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const { DisTube } = require("distube");
 const { SpotifyPlugin } = require("@distube/spotify")
@@ -9,7 +8,7 @@ const client = new Client({
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildVoiceStates,
     GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
+    //GatewayIntentBits.MessageContent
   ],
 });
 client.setMaxListeners(25);
@@ -26,14 +25,17 @@ client.distube = new DisTube(client, {
   emitNewSongOnly: true,
   leaveOnFinish: true,
   emitAddSongWhenCreatingQueue: false,
-  plugins: [new SpotifyPlugin({
-    parallel: true,
-    emitEventsAfterFetching: false,
-    api: {
-      clientId: "624a1b42c6d54653b2358a60b7cb166b",
-      clientSecret: "c12df0061a824536b3597e510085925d",
-    },
-  })]
+  nsfw: true,
+  plugins: [
+    new SpotifyPlugin({
+      parallel: true,
+      emitEventsAfterFetching: false,
+      api: {
+        clientId: process.env.spotifyClientId,
+        clientSecret: process.env.spotifyClientSecret,
+      },
+    })
+  ]
 });
 
 module.exports = client;
@@ -67,7 +69,7 @@ const { handleTestingCommands } = require("./functions/handlers/guild-command-ha
 const { handleTheGroupCommands } = require("./functions/handlers/guild-command-handlers/handleTheGroupCommands");
 const { handleEvents } = require("./functions/handlers/handleEvents");
 
-client.login(token).then(() => {
+client.login(process.env.token).then(() => {
   handleGlobalCommands(client);
   handleTheGroupCommands(client);
   handleTestingCommands(client);

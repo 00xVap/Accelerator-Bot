@@ -59,7 +59,8 @@ module.exports = {
                 **🔗 Links:**
                 > **»** [\`Invite Accelerator   \`](https://discord.com/api/oauth2/authorize?client_id=1011816140885991425&permissions=1644971949559&scope=bot%20applications.commands) - Add Accelerator to your server.
                 > **»** [\`Support Server       \`](https://discord.gg/DZwZv73FzG) - Join the support server.
-                > **»** [\`Vote For Accelerator \`](https://top.gg/bot/1011816140885991425/vote) - Vote for Accelerator on Top.gg.
+                > **»** [\`Vote for Accelerator \`](https://top.gg/bot/1011816140885991425/vote) - Vote for Accelerator on Top.gg.
+                > **»** [\`Github Repository    \`](https://github.com/00xVap/Accelerator-Bot) - See how Accelerator is running.
             `)
 
         const components = (state) => [

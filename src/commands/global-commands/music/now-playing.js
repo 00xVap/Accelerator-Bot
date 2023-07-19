@@ -55,7 +55,7 @@ module.exports = {
                 .setTitle(`\`${currentSong.name}\``)
                 .setURL(`${currentSong.url}`)
                 .setThumbnail(`${currentSong.thumbnail}`)
-                .setDescription(`**Channel:** \`${currentSong.uploader.name}\`\n**Duration:** \`${currentSong.formattedDuration}\`\n**Requested by:** ${currentSong.user}`)
+                .setDescription(`**Channel:** \`${currentSong.uploader.name}\`\n**Duration:** \`${queue.formattedCurrentTime}/${currentSong.formattedDuration}\`\n**Requested by:** ${currentSong.user}`)
                 .setTimestamp()
 
             await interaction.reply({

@@ -1,5 +1,6 @@
 # Accelerator
 Accelerator is a multi-purpose discord bot that is still in development and regularly has updates.
+
 **THIS REPO IS OUTDATED, THE BOT HAS BEEN REWRITTEN**  
 
 - Diep.io Server Fetcher
